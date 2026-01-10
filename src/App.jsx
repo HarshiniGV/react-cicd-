@@ -1,5 +1,10 @@
 import { useState } from 'react'
 import './App.css'
+import architectureImg from './assets/architecture.png'
+import predictionImg from './assets/prediction.jpeg'
+import producerImg from './assets/producer.jpeg'
+import slackImg from './assets/Slackalerts.jpeg'
+import metabaseImg from './assets/MetaBase.jpeg'
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
@@ -268,23 +273,23 @@ function App() {
           {/* Example: Images */}
           <div className="project-images">
             <figure>
-              <img src="src/assets/architecture.png" alt="Architecture" />
+              <img src={architectureImg} alt="Architecture" />
               <figcaption>System Architecture</figcaption>
             </figure>
             <figure>
-              <img src="src/assets/prediction.jpeg" alt="Predictions" />
+              <img src={predictionImg} alt="Predictions" />
               <figcaption>Prophet Forecast Predictions</figcaption>
             </figure>
             <figure>
-              <img src="src/assets/producer.jpeg" alt="Kafka Producer" />
+              <img src={producerImg} alt="Kafka Producer" />
               <figcaption>Kafka Producer Events</figcaption>
             </figure>
             <figure>
-              <img src="src/assets/Slackalerts.jpeg" alt="Slack Alerts" />
+              <img src={slackImg} alt="Slack Alerts" />
               <figcaption>Slack Low-Stock Alerts</figcaption>
             </figure>
             <figure>
-              <img src="src/assets/MetaBase.jpeg" alt="Metabase Dashboard" />
+              <img src={metabaseImg} alt="Metabase Dashboard" />
               <figcaption>Metabase Dashboard</figcaption>
             </figure>
           </div>
