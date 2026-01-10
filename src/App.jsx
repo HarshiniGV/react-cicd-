@@ -5,10 +5,11 @@ import predictionImg from './assets/prediction.jpeg'
 import producerImg from './assets/producer.jpeg'
 import slackImg from './assets/Slackalerts.jpeg'
 import metabaseImg from './assets/MetaBase.jpeg'
+import profileImg from './assets/Harshini.jpeg'
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
-  const [showInventoryModal, setShowInventoryModal] = useState(false)
+  const [showProjectPage, setShowProjectPage] = useState(false)
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
@@ -18,7 +19,78 @@ function App() {
 
   return (
     <div className="portfolio">
-      {/* Navigation */}
+      {showProjectPage ? (
+        // Project Details Page
+        <div className="project-page">
+          <nav className="project-nav">
+            <button 
+              className="back-btn"
+              onClick={() => setShowProjectPage(false)}
+            >
+              ← Back to Portfolio
+            </button>
+          </nav>
+          
+          <div className="container">
+            <h1>AI-Enhanced Event-Driven Inventory Management System</h1>
+            <p className="project-intro">
+              This project implements an end-to-end <strong>inventory management system</strong> combining
+              <strong> real-time event streaming</strong>, <strong>AI-based demand forecasting</strong>, and
+              <strong> automated alerts</strong>.
+            </p>
+
+            <h2>📌 Features</h2>
+            <ul className="features-list">
+              <li><strong>Demand Forecasting (Prophet):</strong> Forecasts minimum stock (7 days) and restock quantity (60 days) via weekly CRON jobs.</li>
+              <li><strong>Event-Driven Architecture (Kafka):</strong> Producer generates BUY/SELL events, consumer updates PostgreSQL in real-time.</li>
+              <li><strong>Big Data Storage (Hadoop):</strong> Stores historical sales data for large-scale analysis and forecasting.</li>
+              <li><strong>Operational Database (PostgreSQL):</strong> Maintains current inventory and prediction data.</li>
+              <li><strong>Automated Slack Alerts:</strong> Low-stock notifications via webhooks.</li>
+              <li><strong>Metabase Dashboard:</strong> Visualizes stock levels, trends, and predictions.</li>
+            </ul>
+
+            <h2>🧰 Tech Stack</h2>
+            <p className="tech-stack">Kafka, Hadoop, PostgreSQL, Prophet, Slack Webhooks, Metabase, Python, CRON</p>
+
+            <h2>📸 Project Screenshots</h2>
+            <div className="project-images">
+              <figure>
+                <img src={architectureImg} alt="Architecture" />
+                <figcaption>System Architecture</figcaption>
+              </figure>
+              <figure>
+                <img src={predictionImg} alt="Predictions" />
+                <figcaption>Prophet Forecast Predictions</figcaption>
+              </figure>
+              <figure>
+                <img src={producerImg} alt="Kafka Producer" />
+                <figcaption>Kafka Producer Events</figcaption>
+              </figure>
+              <figure>
+                <img src={slackImg} alt="Slack Alerts" />
+                <figcaption>Slack Low-Stock Alerts</figcaption>
+              </figure>
+              <figure>
+                <img src={metabaseImg} alt="Metabase Dashboard" />
+                <figcaption>Metabase Dashboard</figcaption>
+              </figure>
+            </div>
+
+            <div className="project-links">
+              <a
+                href="https://github.com/HarshiniGV/inventory-management"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <>
+          {/* Navigation */}
       <nav className="navbar">
         <div className="nav-container">
           <h1 className="nav-logo">Portfolio</h1>
@@ -71,7 +143,7 @@ function App() {
 
       <div className="about-image">
         <img
-          src="src\assets\Harshini.jpeg"
+          src={profileImg}
           alt="Harshini G Venkatesh"
           className="profile-image"
         />
@@ -201,7 +273,7 @@ function App() {
             </a>
             <button
               className="btn-small secondary"
-              onClick={() => setShowInventoryModal(true)}
+              onClick={() => setShowProjectPage(true)}
             >
               View Outputs
             </button>
@@ -243,62 +315,6 @@ function App() {
   </div> {/* Closing container */}
 </section> {/* Closing projects section */}
 
-    {/* Modal for Project 1 Outputs */}
-    {showInventoryModal && (
-      <div className="modal-overlay" onClick={() => setShowInventoryModal(false)}>
-        <div className="modal-content" onClick={e => e.stopPropagation()}>
-          <button className="modal-close" onClick={() => setShowInventoryModal(false)}>
-            ×
-          </button>
-          <h2>AI-Enhanced Event-Driven Inventory Management System</h2>
-          <p>
-            This project implements an end-to-end <strong>inventory management system</strong> combining
-            <strong> real-time event streaming</strong>, <strong>AI-based demand forecasting</strong>, and
-            <strong> automated alerts</strong>.
-          </p>
-
-          <h3>📌 Features</h3>
-          <ul>
-            <li><strong>Demand Forecasting (Prophet):</strong> Forecasts minimum stock (7 days) and restock quantity (60 days) via weekly CRON jobs.</li>
-            <li><strong>Event-Driven Architecture (Kafka):</strong> Producer generates BUY/SELL events, consumer updates PostgreSQL in real-time.</li>
-            <li><strong>Big Data Storage (Hadoop):</strong> Stores historical sales data for large-scale analysis and forecasting.</li>
-            <li><strong>Operational Database (PostgreSQL):</strong> Maintains current inventory and prediction data.</li>
-            <li><strong>Automated Slack Alerts:</strong> Low-stock notifications via webhooks.</li>
-            <li><strong>Metabase Dashboard:</strong> Visualizes stock levels, trends, and predictions.</li>
-          </ul>
-
-          <h3>🧰 Tech Stack</h3>
-          <p>Kafka, Hadoop, PostgreSQL, Prophet, Slack Webhooks, Metabase, Python, CRON</p>
-
-          {/* Example: Images */}
-          <div className="project-images">
-            <figure>
-              <img src={architectureImg} alt="Architecture" />
-              <figcaption>System Architecture</figcaption>
-            </figure>
-            <figure>
-              <img src={predictionImg} alt="Predictions" />
-              <figcaption>Prophet Forecast Predictions</figcaption>
-            </figure>
-            <figure>
-              <img src={producerImg} alt="Kafka Producer" />
-              <figcaption>Kafka Producer Events</figcaption>
-            </figure>
-            <figure>
-              <img src={slackImg} alt="Slack Alerts" />
-              <figcaption>Slack Low-Stock Alerts</figcaption>
-            </figure>
-            <figure>
-              <img src={metabaseImg} alt="Metabase Dashboard" />
-              <figcaption>Metabase Dashboard</figcaption>
-            </figure>
-          </div>
-
-
-        </div>
-      </div>
-    )}
-
       {/* Contact Section */}
       <section id="contact" className="contact">
         <div className="container">
@@ -335,6 +351,8 @@ function App() {
           </div>
         </div>
       </footer>
+        </>
+      )}
     </div>
   )
 }
