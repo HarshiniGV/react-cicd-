@@ -234,7 +234,9 @@ function App() {
         </div>
       </div>
 
-    </div>
+    </div> {/* Closing projects-grid */}
+  </div> {/* Closing container */}
+</section> {/* Closing projects section */}
 
     {/* Modal for Project 1 Outputs */}
     {showInventoryModal && (
@@ -291,9 +293,6 @@ function App() {
         </div>
       </div>
     )}
-  </div>
-</section>
-
 
       {/* Contact Section */}
       <section id="contact" className="contact">
